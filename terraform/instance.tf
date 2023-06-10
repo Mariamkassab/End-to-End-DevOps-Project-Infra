@@ -14,7 +14,7 @@ resource "google_compute_instance" "private_vm" {
     subnetwork = google_compute_subnetwork.bastion_subnet.id
   }
 
-  #metadata_startup_script = file("automation.tpl")
+  metadata_startup_script = file("automation.tpl")
 
 
 }
