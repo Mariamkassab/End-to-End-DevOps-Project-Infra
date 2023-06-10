@@ -1,5 +1,5 @@
-resource "google_compute_instance" "default" {
-  name         = "test"
+resource "google_compute_instance" "private_vm" {
+  name         = "private-bastion"
   machine_type = "e2-micro"
   zone         = "us-central1-a"
 
@@ -13,4 +13,8 @@ resource "google_compute_instance" "default" {
     network = google_compute_network.mariam_vpc.id
     subnetwork = google_compute_subnetwork.bastion_subnet.id
   }
+
+  #metadata_startup_script = file("automation.tpl")
+
+
 }

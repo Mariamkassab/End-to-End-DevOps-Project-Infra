@@ -4,7 +4,7 @@ metadata:
   name: claim-jenkins
   namespace: jenkins
 spec:
-  #storageClassName: manual
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:

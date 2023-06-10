@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: {{.Values.metadata.name}}
-  name: {{.Values.metadata.name}}
+    app: jenkins
+  name: jenkins
   namespace: jenkins
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: {{.Values.metadata.name}}
+      app: jenkins
   template:
     metadata:
       labels:
-        app: {{.Values.metadata.name}}
+        app: jenkins
     spec:
       securityContext:
         fsGroup: 1000 
@@ -35,7 +35,7 @@ spec:
       containers:
       - image: jenkins/jenkins:lts-jdk11
         imagePullPolicy: IfNotPresent
-        name: {{.Values.metadata.name}}            
+        name: jenkins            
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -54,7 +54,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /var/run   #pod path
+        - mountPath: /var/run
           name: docker-sock
         - name: data-disk
           mountPath: /var/jenkins_home
@@ -70,10 +70,10 @@ spec:
       terminationGracePeriodSeconds: 30
       volumes:
       - hostPath:
-          path: /var/run  #node path 
+          path: /var/run
           type: ""
         name: docker-sock
-      - name: data-disk  # on pod "[path]"
+      - name: data-disk
         persistentVolumeClaim:
           claimName: claim-jenkins
       - name: docker

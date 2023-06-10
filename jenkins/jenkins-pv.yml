@@ -4,10 +4,10 @@ metadata:
   name: pv-jenkins
   namespace: jenkins
 spec:
-  #storageClassName: manual
+  storageClassName: manual
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/root/jen" #node path
+    path: "/Users/admin/Desktop/elkasaby/ITI/sonarqube/demo03/apply-jenkins/jenkins/jenkins-home"

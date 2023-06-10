@@ -39,7 +39,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
   node_config {
     preemptible  = true
-    machine_type = "e2-micro"
+    machine_type = "e2-medium"
 
     service_account = google_service_account.gke-service-account.email
     oauth_scopes    = [
