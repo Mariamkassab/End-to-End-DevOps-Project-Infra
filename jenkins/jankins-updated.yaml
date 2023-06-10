@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{.Values.metadata.name}}
+  name: {{.Values.metadata.name}}
+  namespace: jenkins
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: {{.Values.metadata.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.metadata.name}}
+    spec:
+      securityContext:
+        fsGroup: 1000 
+        runAsUser: 0
+      initContainers:
+      - name: install-docker
+        image: docker:stable
+        command: ["cp", "/usr/local/bin/docker", "/data/docker"]    
+        volumeMounts:
+        - name: docker
+          mountPath: "/data"
+      - name: install-kubectl
+        image: eslamkarim/jenkins-ansible-kubectl
+        command: ["cp", "/usr/local/bin/kubectl", "/data/kubectl"]    
+        volumeMounts:
+        - name: kubectl
+          mountPath: "/data" 
+      containers:
+      - image: jenkins/jenkins:lts-jdk11
+        imagePullPolicy: IfNotPresent
+        name: {{.Values.metadata.name}}            
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 50000
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /login
+            port: 8080
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 2
+          timeoutSeconds: 5
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/run   #pod path
+          name: docker-sock
+        - name: data-disk
+          mountPath: /var/jenkins_home
+        - name: docker
+          subPath: "docker"
+          mountPath: "/usr/local/bin/docker"
+        - name: kubectl
+          subPath: "kubectl"
+          mountPath: "/usr/local/bin/kubectl"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /var/run  #node path 
+          type: ""
+        name: docker-sock
+      - name: data-disk  # on pod "[path]"
+        persistentVolumeClaim:
+          claimName: claim-jenkins
+      - name: docker
+        emptyDir: {}
+      - name: kubectl
+        emptyDir: {}
