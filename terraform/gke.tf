@@ -37,9 +37,6 @@ resource "google_container_node_pool" "primary_nodes" {
     preemptible  = true
     machine_type = "e2-micro"
 
-    service_account = google_service_account.gke-service-account.email
-    oauth_scopes    = [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ]
+    
   }
 }
