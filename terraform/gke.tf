@@ -1,6 +1,6 @@
 resource "google_container_cluster" "gke_cluster" {
   name     = "mariam-gke"
-  location = "us-central1"
+  location = "us-central1-a"
 
   remove_default_node_pool = true
   initial_node_count       = 3
@@ -23,6 +23,10 @@ resource "google_container_cluster" "gke_cluster" {
        display_name = "bastion"
      }
    }
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block  = ""
+    services_ipv4_cidr_block = ""
+  }
 
  }
 
@@ -37,6 +41,9 @@ resource "google_container_node_pool" "primary_nodes" {
     preemptible  = true
     machine_type = "e2-micro"
 
-    
+    service_account = google_service_account.gke-service-account.email
+    oauth_scopes    = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
   }
 }
