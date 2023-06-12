@@ -1,8 +1,8 @@
-/terraform/.terraform
-/terraform/.terraform.lock.hcl
-/terraform/.terraform.tfstate.lock.info
-/terraform/terraform.tfstate
-/terraform/terraform.tfstate.backup
-/ansible/.idea
-/ansible/ansible_key.json
+./terraform/.terraform
+./terraform/.terraform.lock.hcl
+./terraform/.terraform.tfstate.lock.info
+./terraform/terraform.tfstate
+./terraform/terraform.tfstate.backup
+./ansible/.idea
+./ansible/ansible_key.json
 .git
