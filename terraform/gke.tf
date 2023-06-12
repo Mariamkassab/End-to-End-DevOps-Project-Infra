@@ -22,6 +22,7 @@ resource "google_container_cluster" "gke_cluster" {
        cidr_block = "10.0.1.0/24"
        display_name = "bastion"
      }
+     
    }
   ip_allocation_policy {
     cluster_ipv4_cidr_block  = ""

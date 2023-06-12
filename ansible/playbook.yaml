@@ -1,4 +1,63 @@
 - name: play1
-  hosts: web
-  roles:
-    - web
+  hosts: all
+  
+  collections:
+    - kubernetes.core
+    
+  tasks:
+    - name: Install kubernetes python package
+      pip:
+        name: kubernetes
+        state: present
+
+    - name: Copy deployment files
+      copy: 
+        src: "{{ item.src }}" 
+        dest: /home/mariam_solimankassab/jenkins
+      loop:
+        - src: /home/mariam/Desktop/iti_project/infra_repo/jenkins/jenkins-pv.yml
+        - src: /home/mariam/Desktop/iti_project/infra_repo/jenkins/slave-deploy.yaml
+        - src: /home/mariam/Desktop/iti_project/infra_repo/jenkins/loadbalancer_svc.yaml
+        - src: /home/mariam/Desktop/iti_project/infra_repo/jenkins/slave-svc.yaml
+        - src: /home/mariam/Desktop/iti_project/infra_repo/jenkins/jenkins-pvc.yml
+        - src: /home/mariam/Desktop/iti_project/infra_repo/jenkins/master_deploy.yaml
+      
+        
+    - name: Create a k8s namespace app
+      k8s:
+        name: app
+        api_version: v1
+        kind: Namespace
+        state: present
+        
+    - name: Create a k8s namespace jenkins
+      k8s:
+        name: jenkins
+        api_version: v1
+        kind: Namespace
+        state: present
+    
+    - name: Create service account
+      k8s:
+        api_version: v1
+        kind: ServiceAccount
+        name: jenkins-deployer
+        namespace: jenkins
+        state: present    
+        
+    - name: Create a jenkins deployment
+      k8s:
+        state: present
+        namespace: jenkins
+        src: "{{ item.src }}" 
+      loop:
+        - src: /home/mariam_solimankassab/jenkins/jenkins-pv.yml
+        - src: /home/mariam_solimankassab/jenkins/jenkins-pvc.yml
+        - src: /home/mariam_solimankassab/jenkins/slave-deploy.yaml
+        - src: /home/mariam_solimankassab/jenkins/master_deploy.yaml
+        - src: /home/mariam_solimankassab/jenkins/loadbalancer_svc.yaml
+        - src: /home/mariam_solimankassab/jenkins/slave-svc.yaml
+
+        
+        
+        
