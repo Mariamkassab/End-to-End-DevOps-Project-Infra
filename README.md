@@ -26,7 +26,7 @@ terraform plan
 terraform apply
 ```
 
-* run ``` gcloud compute ssh private-bastion --dry-runprivate-bastion ``` to get the "ProxyCommand"
+* run ``` gcloud compute ssh private-bastion --dry-run private-bastion ``` to get the "ProxyCommand"
 * run ``` ssh-keygen -t rsa ``` to generate a keypair
 * then ssh to the private-bastion
 * copy the pub key and paste it in the private-bastion in path: "/home/user/.ssh/authorized_keys"
@@ -40,7 +40,7 @@ gcloud auth login
 gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_name>
 ```
 ---
-## create jenkins slvee image will all its dependances:
+## Create jenkins slave image with all its dependances:
 
 * on dockerhub   ```  mariamkasssab/jenkins_slave:v3  ```
 
