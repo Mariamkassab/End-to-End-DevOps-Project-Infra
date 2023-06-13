@@ -10,4 +10,4 @@ apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 apt install ansible -y
 ansible-galaxy collection install kubernetes.core
 apt install pip -y
-mkdir /home/mariam_solimankassab/jenkins
+

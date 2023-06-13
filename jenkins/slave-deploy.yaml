@@ -22,7 +22,7 @@ spec:
             runAsUser: 0
       containers:
       - name: jenkins-ubuntu-slave
-        image: mariamkasssab/jenkins_slave:v1
+        image: mariamkasssab/jenkins_slave:v3
         imagePullPolicy: Always
         ports:
         - containerPort: 22
