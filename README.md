@@ -2,6 +2,8 @@
 
 * The project is about creating a private cluster and deploy Jenkins, and deploy as app using Jenkins pipeline.
 * I used google cloud provider,created the infra using Terraform, and deployed Jenkins on the GKE using Ansible.
+* The [Infra repo](https://github.com/Mariamkassab/ITI-Final-Project-Infra)
+* The [APP repo](https://github.com/Mariamkassab/ITI-Final-project-APP)
 
 ## Terraform components: 
 
