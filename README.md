@@ -29,6 +29,9 @@ gcloud auth login
 gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_name>
 ```
 ---
+## create jenkins slvee image will all its dependances:
+
+* on dockerhub   ```  mariamkasssab/jenkins_slave:v3  ```
 
 ## Commands to run Ansible:
 
