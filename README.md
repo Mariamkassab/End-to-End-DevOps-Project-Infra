@@ -65,6 +65,17 @@ gcloud auth login
 ```
 gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_name>
 ```
+---
+![2](https://github.com/Mariamkassab/ITI-Final-project-APP/assets/123699968/7b9edd96-b707-45d1-9c2b-76f48775b203)
+
+---
+![1](https://github.com/Mariamkassab/ITI-Final-project-APP/assets/123699968/5c8ca49f-c345-465b-92de-843dd257c4d5)
+
+---
+![3](https://github.com/Mariamkassab/ITI-Final-project-APP/assets/123699968/942c5208-3ee0-4466-ba8a-2ebed50f633f)
+
+---
+![4](https://github.com/Mariamkassab/ITI-Final-project-APP/assets/123699968/6290cbe3-c933-4007-8bd9-ed00eacf1492)
 
 ---
 
