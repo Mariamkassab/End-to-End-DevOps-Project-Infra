@@ -28,6 +28,7 @@ gcloud auth login
 ```
 gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_name>
 ```
+---
 
 ## Commands to run Ansible:
 
@@ -38,6 +39,7 @@ gcloud container clusters get-credentials <cluster_name> --zone <zone> --project
 ``` 
 ansible-playbook playbook.yaml -e 'ansible_ssh_common_args="-o -<ProxyCommand>- "'  
 ```
+---
 ## Commands on the jenkins salve pod:
 * ```passwd jenkins```  to reset the password we will use on jenkins.
 *  ``` chmod 777 /var/run/docker.sock ```
@@ -50,4 +52,15 @@ gcloud auth login
 gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_name>
 ```
 
+---
+
+![Ansible](https://github.com/Mariamkassab/ITI-Final-Project-Infra/assets/123699968/21481008-8664-444d-8ead-4fd82f121d8e)
+
+---
+
+![image](https://github.com/Mariamkassab/ITI-Final-Project-Infra/assets/123699968/4f27353f-6063-490f-afa9-3e3f1f5513a6)
+
+---
+
+![image](https://github.com/Mariamkassab/ITI-Final-Project-Infra/assets/123699968/e47ac916-eaa7-4ee8-a6e0-f94cc6b2cbe0)
 
