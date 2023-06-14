@@ -14,6 +14,10 @@
 * NAT Gatway and Router 
 * Service Account 
 * private-bastion wuth its automation file
+---
+![Cloud Architecture - Page 1 (1)](https://github.com/Mariamkassab/ITI-Final-Project-Infra/assets/123699968/9db1df4a-99b9-4c6f-b6ad-cf75071b4e2e)
+
+---
 
 ## Commands to run Terraform:
 ```
