@@ -9,7 +9,7 @@ resource "google_compute_firewall" "iap_access" {
         ports    = ["22" , "80"]  
     }
     source_ranges = [
-        "0.0.0.0/0"
+        "35.235.240.0/20"
     # iap will enforce access control based on the authorized users and their authentication
     ]
 }
