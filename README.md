@@ -1,4 +1,4 @@
-# ITI-Final-Project:
+# END-to-END-DevOps-Project-Infra:
 
 * The project is about creating a private cluster and deploying Jenkins, and deploying as an app using the Jenkins pipeline.
 * I used a google cloud provider, created the infra using Terraform, and deployed Jenkins on the GKE using Ansible.
